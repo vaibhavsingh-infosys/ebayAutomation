@@ -1,22 +1,32 @@
 package test;
 
 import org.testng.annotations.Test;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import org.testng.annotations.Test;
 
 import helper.DataEntity;
+import helper.User;
+import utils.CustomDataProvider;
 
 public class CheckoutTest {
-	@Test
-	public void GuestUser_CheckoutFlow(DataEntity d){
-		try {
-			FileInputStream is=new FileInputStream(new File("/resources/data/test.data"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	@Test(dataProvider="checkOutData", dataProviderClass=CustomDataProvider.class)
+	public void GuestUser_CheckoutFlow(DataEntity data){	
+		User.getFactory()
+			
+			._SearchAction()
+				.searchForItem(data.getSearchKeyword())
+				.verifySearchResultPage(data.getSearchKeyword())
+				.selectAndVerifySizeFilterOption(data.getScreenSize())
+				.selectRandomItemFromProductList()
+			._ProductAction()
+				.verifyProductPageAndNavigateToCart()
+			._AddToCartAction()
+				.verifyProductInCartPageAndNavigateToCheckout()
+			._CheckoutAction() 
+				//Guest option intermittent for checkout
+				//For Guest/Registered user it is asking of call verification before proceeding to checkout - screenshot - //root folder/issue.jpg
+				//.enterUserRegisterattionDetailsAndContinue()
+				//.proceedAsGuestCheckout()
+
+		;
 	}
+	
 }

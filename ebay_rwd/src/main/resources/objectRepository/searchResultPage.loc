@@ -1,0 +1,3 @@
+list.searchResult = xpath:(//li[@class='s-item']//h3)|(//ul[@id='ListViewInner']/li//h3)
+checkbox.tvSizeFilter = xpath://div[contains(text(),'{0}')]
+button.rightScrollFilter = xpath:((//span[contains(@class,'srp-chevron-right')])|(//button[contains(@class,'icon-chevron-right')]))[last()]

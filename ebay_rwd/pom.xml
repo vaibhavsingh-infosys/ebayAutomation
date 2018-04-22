@@ -7,7 +7,13 @@
 	<packaging>pom</packaging>
 
 	<build>
-
+		 <directory>${project.basedir}/build</directory>
+        <sourceDirectory>${builddir}/src/main/java</sourceDirectory>
+		<scriptSourceDirectory>${builddir}/src/main/java/test</scriptSourceDirectory>
+    	<testSourceDirectory>${builddir}/src/main/java/test</testSourceDirectory>
+        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+    	<testOutputDirectory>${project.build.directory}/classes</testOutputDirectory>
+        
  		<resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -15,9 +21,6 @@
             </resource>
         </resources>
         
-        <outputDirectory>${project.build.directory}/myclasses</outputDirectory>
-    	<testOutputDirectory>${project.build.directory}/myclasses</testOutputDirectory>
-         
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -29,6 +32,15 @@
            				 <include>src/main/java/**/*.java</include>
       				</includes>
 				</configuration>
+				<executions>
+					<execution>
+						<id>default-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -37,8 +49,9 @@
 				<version>2.21.0</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>src/main/resources/config/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
+					<forkMode>never</forkMode>
 				</configuration>
 				<executions>
 					<execution>
@@ -51,6 +64,13 @@
 				</executions>
 
 			</plugin>
+			
+			<plugin>
+       		    <groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-surefire-report-plugin</artifactId>
+        	    <version>2.15</version>
+        	</plugin>
+		
 		</plugins>
 	</build>
 
@@ -60,11 +80,23 @@
 			<artifactId>selenium-java</artifactId>
 			<version>3.11.0</version>
 		</dependency>
+		
+		<dependency>
+        	<groupId>org.seleniumhq.selenium</groupId>
+        	<artifactId>selenium-server</artifactId>
+        	<version>3.11.0</version>
+   		</dependency>  
 
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>com.google.code.gson</groupId>
+   			<artifactId>gson</artifactId>
+  			<version>2.8.2</version>
 		</dependency>
 	</dependencies>
 

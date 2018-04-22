@@ -1,0 +1,6 @@
+text.timeLeft = id:vi-cdown_timeLeft
+text.price = id:prcIsum
+text.itemName = id:itemTitle
+text.sellerName = xpath:((//h2[contains(text(),'Seller information')]/following-sibling::div//a)[1])|(//div[contains(@class,'mbg')]/a)
+button.atc = xpath://a[contains(text(),'Add to cart')]
+button.goToCart = xpath://span[contains(text(),'Go to cart')]
