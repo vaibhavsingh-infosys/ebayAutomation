@@ -9,6 +9,11 @@ public class addToCartAction extends SiteFactory{
 		this.sf=siteFactory;
 	}
 
+	/**
+	 * Method to verify product in cart
+	 * And navigate to checkout screen
+	 * @return
+	 */
 	public addToCartAction verifyProductInCartPageAndNavigateToCheckout() {
 		sf.cartPage().verifyProductInCartPage();
 		sf.cartPage().navigateToCheckout();

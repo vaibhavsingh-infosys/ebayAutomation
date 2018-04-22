@@ -20,10 +20,16 @@ public class checkoutPage {
 	Locator continueButton = new Locator("button.continue", "Continue button");
 	Locator guestCheckoutButton = new Locator("button.guestCheckout", "Guest checkout button"); 
 	
+	/**
+	 * Mthod to click on Registration button
+	 */
 	public void clickOnRegistrationButton() {
 		CustomUtils.click(regsitrationButton);
 	}
 
+	/**
+	 * Method tofill random registration detail and continue
+	 */
 	public void enterRandomUserInfoAndContinue() {
 		CustomUtils.sendKeys(firstName, "TestQA");
 		CustomUtils.sendKeys(lastName, "Ïnfosys");
@@ -32,6 +38,9 @@ public class checkoutPage {
 		CustomUtils.click(continueButton);
 	}
 
+	/**
+	 * Method to proceed checkout as guest
+	 */
 	public void proceedAsGuestChecout() {
 		CustomUtils.click(guestCheckoutButton);
 	}

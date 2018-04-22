@@ -8,6 +8,11 @@ import org.testng.collections.Maps;
 
 import utils.ReportListener;
 
+/**
+ * Custom soft assert created to put assert message in test object
+ * @author Vaibhav
+ *
+ */
 public class CustomSoftAssert extends SoftAssert{
 	 private final Map<AssertionError, IAssert<?>> m_errors = Maps.newLinkedHashMap();
 

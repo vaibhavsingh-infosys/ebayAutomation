@@ -1,5 +1,9 @@
 package helper;
 
+/**
+ * Class created to populate value as in test data
+ * @author Vaibhav
+ */
 public class DataEntity {
 	private String searchKeyword;
 	private String screenSize;

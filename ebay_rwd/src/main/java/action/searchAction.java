@@ -8,11 +8,19 @@ public class searchAction  extends SiteFactory {
 		this.sf=siteFactory;
 	}
 
+	/**
+	 * search for item
+	 * @param searchKeyword
+	 * @return
+	 */
 	public searchAction searchForItem(String searchKeyword) {
 		sf.homePage().searchForItem(searchKeyword);
 		return this;
 	}
 
+	/**
+	 * verify srp
+	 */
 	public searchAction verifySearchResultPage(String searchKeyword) {
 		sf.searchResultPage().verifySearchResultPage(searchKeyword);
 		return this;

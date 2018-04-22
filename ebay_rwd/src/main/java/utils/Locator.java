@@ -6,6 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Custom locator class - reads locators from object repository
+ * Assigns locator type
+ * @author Vaibhav
+ *
+ */
 public class Locator {
 	static Properties properties;
 	static {

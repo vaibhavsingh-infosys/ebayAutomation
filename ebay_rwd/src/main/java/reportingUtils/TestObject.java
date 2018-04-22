@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Class created to creat json using gson
+ * @author Vaibhav
+ *
+ */
 public class TestObject {
 
 	private String testName;

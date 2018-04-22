@@ -20,7 +20,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 import reportingUtils.CustomSoftAssert;
-
+/**
+ * Class for custom utilities methods
+ * @author Vaibhav
+ *
+ */
 public class CustomUtils {
 	public static ThreadLocal<CustomUtils> c=new ThreadLocal<CustomUtils>();
 	public static Properties properties=new Properties();
@@ -29,6 +33,11 @@ public class CustomUtils {
 	public WebDriverWait wait=null;
 	public CustomSoftAssert sa=new CustomSoftAssert();
 	
+	/**
+	 * Driver initial setup
+	 * Reads config and create driver as per it
+	 * navigates to home page of given url in config
+	 */
 	public static void setup() {
 		c.set(new CustomUtils());
 		
@@ -63,10 +72,15 @@ public class CustomUtils {
 		c.get().wait=new WebDriverWait(c.get().driver, 30);
 		c.get().driver.manage().window().maximize();
 		c.get().driver.get(properties.getProperty("siteURL"));
-		Reporter.log("Navigate to EBAY home page");
-		ReportListener.test.get().setMsg("Navigate to EBAY home page");
+		Reporter.log("Navigate to home page");
+		ReportListener.test.get().setMsg("Navigate to home page");
 	}
 
+	/**
+	 * Method to get Webelement from custom locator class
+	 * @param locator
+	 * @return
+	 */
 	public static WebElement getElement(Locator locator) {
 		WebElement ele = null;
 		switch (locator.getType()) {
@@ -88,6 +102,11 @@ public class CustomUtils {
 		return ele;
 	}
 	
+	/**
+	 * Method to get Elements from locator class
+	 * @param locator
+	 * @return
+	 */
 	public static List<WebElement> getElements(Locator locator) {
 		List<WebElement> ele = null;
 		switch (locator.getType()) {
@@ -109,12 +128,22 @@ public class CustomUtils {
 		return ele;
 	}
 	
+	/**
+	 * MEthod to type and log in report
+	 * @param locator
+	 * @param keyword
+	 */
 	public static void sendKeys(Locator locator, String keyword) {
 		getElement(locator).sendKeys(keyword);
 		Reporter.log("Type \""+keyword+"\" in \""+locator.getDesc()+"\"");
 		ReportListener.test.get().setMsg("Type \""+keyword+"\" in \""+locator.getDesc()+"\"");
 	}
 	
+	/**
+	 * MEthod to click and log in report
+	 * @param locator
+	 * @param keyword
+	 */
 	public static void click(Locator locator) {
 		c.get().wait.until(ExpectedConditions.elementToBeClickable(getElement(locator)));
 		getElement(locator).click();
@@ -123,6 +152,11 @@ public class CustomUtils {
 		ReportListener.test.get().setMsg("Click on \""+locator.getDesc()+"\"");
 	}
 	
+	/**
+	 * MEthod to verify visibility and log in report
+	 * @param locator
+	 * @param keyword
+	 */
 	public static void verifyVisible(Locator locator) {
 		c.get().wait.until(ExpectedConditions.visibilityOfAllElements(getElement(locator)));
 		c.get().sa.assertEquals(getElement(locator).isDisplayed(), true);
@@ -130,6 +164,11 @@ public class CustomUtils {
 		ReportListener.test.get().setMsg("Verified visibility of \""+locator.getDesc()+"\"");
 	}
 	
+	/**
+	 * MEthod to verify visibility and log in report
+	 * @param locator
+	 * @param keyword
+	 */
 	public static void verifyAllVisible(Locator locator) {
 		c.get().wait.until(ExpectedConditions.visibilityOfAllElements(getElement(locator)));
 		for(WebElement ele:getElements(locator))
@@ -138,6 +177,11 @@ public class CustomUtils {
 		ReportListener.test.get().setMsg("Verified visibility of all elements located by \""+locator.getDesc()+"\"");
 	}
 	
+	/**
+	 * Method to verify text contains and log in report
+	 * @param locator
+	 * @param keyword
+	 */
 	public static void verifyContainsText(Locator locator, String expectedText) {
 		System.out.println(getElement(locator).getText()+"  - - -  "+expectedText);
 		c.get().sa.assertEquals(getElement(locator).getText().contains(expectedText) | expectedText.contains(getElement(locator).getText()), true);
@@ -145,6 +189,11 @@ public class CustomUtils {
 		ReportListener.test.get().setMsg("Verified \""+locator.getDesc()+"\" contains \""+expectedText+"\"");
 	}
 	
+	/**
+	 * Method to return is displayed value
+	 * @param locator
+	 * @param keyword
+	 */
 	public static boolean isDisplayed(Locator locator) {
 		boolean disp=false;
 		try {
@@ -156,6 +205,11 @@ public class CustomUtils {
 		return disp;
 	}
 	
+	/**
+	 * Method to verify text contains and log in report
+	 * @param locator
+	 * @param keyword
+	 */
 	public static void verifyContainsTextList(Locator locator, String expectedText) {
 		for(WebElement ele:getElements(locator)) {
 			c.get().sa.assertEquals(ele.getText().toLowerCase().contains(expectedText.toLowerCase()), true,"Text : "+expectedText+" not found in \""+ele.getText()+"\"");
@@ -164,6 +218,11 @@ public class CustomUtils {
 		ReportListener.test.get().setMsg("Verified all element of \""+locator.getDesc()+"\" contains \""+expectedText+"\"");
 	}
 	
+	/**
+	 * Method to format xpath {0} - first text param, {n} - nth text param
+	 * @param locator
+	 * @param keyword
+	 */
 	public static Locator format(Locator locator, String... text) {
 		String l="";
 		for(int i=0; i<text.length;i++) {

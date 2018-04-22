@@ -1,5 +1,10 @@
 package helper;
 
+/**
+ * Entity class to save product data from PDP and verify it in other screens
+ * @author Vaibhav
+ *
+ */
 public class ProductEntity {
 	private String productName;
 	private String productPrice;

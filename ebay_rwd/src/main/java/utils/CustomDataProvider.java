@@ -14,6 +14,10 @@ import helper.DataEntity;
 
 public class CustomDataProvider {
 
+	/**
+	 * Data provider to read test data from test.data file and pass it to test script
+	 * @return
+	 */
 	@DataProvider(name = "checkOutData")
 	public static Object[][] testData() {
 		List<DataEntity> dataList= new ArrayList<DataEntity>();

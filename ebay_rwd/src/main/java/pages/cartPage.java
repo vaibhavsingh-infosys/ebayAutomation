@@ -16,6 +16,9 @@ public class cartPage {
 	Locator unitCount=new Locator("text.unitCount", "Unit count text in cart page");
 	Locator proceedToCheckout=new Locator("button.proceedToCheckout", "Proceed to checkout button");
 	
+	/**
+	 * method to verify product details in cart - comparing it with PDP details
+	 */
 	public void verifyProductInCartPage() {
 		ProductEntity pd=(ProductEntity)CustomUtils.context.get();
 		CustomUtils.verifyContainsText(productName, pd.getProductName());
@@ -24,6 +27,9 @@ public class cartPage {
 		CustomUtils.verifyVisible(unitCount);
 	}
 
+	/**
+	 * method to proceed to checkout
+	 */
 	public void navigateToCheckout() {
 		CustomUtils.click(proceedToCheckout);
 	}

@@ -21,7 +21,9 @@ public class productDetailPage {
 	Locator addToCart = new Locator("button.atc", "Add to cart button");
 	Locator goToCart = new Locator("button.goToCart", "Go to cart button");
 	
-	
+	/**
+	 * Method to verify pdp and navigate to cart
+	 */
 	public void verifyProductPageAndNavigateToCart() {
 		try {
 			String tLeft=CustomUtils.getElement(timeleft).getText();

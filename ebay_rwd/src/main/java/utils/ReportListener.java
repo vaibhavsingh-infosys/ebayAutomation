@@ -21,6 +21,11 @@ import com.google.gson.reflect.TypeToken;
 
 import reportingUtils.TestObject;
 
+/**
+ * Custom report listener - creates json file, screenshot on failure
+ * @author Vaibhav
+ *
+ */
 public class ReportListener implements ITestListener {
 	public static ThreadLocal<TestObject> test;
 	List<TestObject> tests =new ArrayList<TestObject>();
