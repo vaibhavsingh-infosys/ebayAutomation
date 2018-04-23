@@ -1,0 +1,15 @@
+body {
+    background-color: darkslategrey;
+    color: azure;
+    font-size: 1.1em;
+}
+h1 {
+    color: coral;
+}
+table, th, td{
+	border: 1px solid white;
+	border-color: white;
+}
+table{
+	width: 80%;
+}

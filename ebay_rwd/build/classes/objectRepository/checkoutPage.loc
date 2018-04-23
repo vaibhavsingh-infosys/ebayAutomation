@@ -1,0 +1,7 @@
+button.registrationSelect = id:regTab
+input.firstName = id:firstname
+input.lastName = id:lastname
+input.emailId = id:email
+input.password = id:PASSWORD
+button.continue = id:ppaFormSbtBtn
+button.guestCheckout = id:gtChk
