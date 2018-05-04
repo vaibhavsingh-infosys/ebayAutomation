@@ -25,11 +25,7 @@ public class CheckoutTest {
 				.verifyProductPageAndNavigateToCart()
 			._AddToCartAction()
 				.verifyProductInCartPageAndNavigateToCheckout()
-			._CheckoutAction() 
-				//Guest option intermittent for checkout
-				//For Guest/Registered user it is asking of call verification before proceeding to checkout - screenshot - //root folder/issue.jpg
-				//.enterUserRegisterattionDetailsAndContinue()
-				//.proceedAsGuestCheckout()
+		
 
 		;
 	}
