@@ -47,8 +47,4 @@ public class CustomDataProvider {
 		 }
 		return obj;
 	}
-
-	public static void main(String[] args) {
-		testData();
-	}
 }
